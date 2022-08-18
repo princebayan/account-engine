@@ -11,7 +11,7 @@ on:
 # Environment variables available to all jobs and steps in this workflow
 env:
   GITHUB_SHA: ${{ github.sha }}
-  DOCKER_IMAGE_TAG: dev
+  DOCKER_IMAGE: persona
   DEPLOYMENT_NAME: persona
   REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
   REMOTE_USERNAME: ${{ secrets.REMOTE_USERNAME }}
@@ -65,14 +65,20 @@ jobs:
           password: ${{ secrets.REMOTE_PASSWORD }}
           port: ${{ secrets.REMOTE_PORT }}
           source: "persona-image.tar"
-          target: "persona-image.tar"
+          target: "images"
 
-#      - name: executing remote ssh commands using password
-#        uses: appleboy/ssh-action@master
-#        with:
-#          host: "$REMOTE_HOST"
-#          username: $REMOTE_USERNAME
-#          password: $REMOTE_PASSWORD
-#          port: 22
-#          script: whoami
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USERNAME }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
+          port: ${{ secrets.REMOTE_PORT }}
+          script: |
+            ls -a
+            cd images
+            ls -a
+            docker load -i persona-image.tar
+            docker run -d -p 8080:8080 --name persona persona:latest
+
 
