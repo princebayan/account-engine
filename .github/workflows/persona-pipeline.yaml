@@ -11,7 +11,7 @@ on:
 # Environment variables available to all jobs and steps in this workflow
 env:
   GITHUB_SHA: ${{ github.sha }}
-  DOCKER_IMAGE: test/persona:1.0.0-dev"
+  DOCKER_IMAGE: com.test.example/persona:1.0.0-dev"
   DEPLOYMENT_NAME: persona
   REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
   REMOTE_USERNAME: ${{ secrets.REMOTE_USERNAME }}
