@@ -32,19 +32,13 @@ out/
 ### VS Code ###
 .vscode/
 src/main/resources/keystore
-src/main/resources/application*
 src/main/resources/log4j2-dev.xml
 .DS_Store
 src/.DS_Store
 src/main/.DS_Store
 src/main/resources/.DS_Store
 
-src/main/resources/redisson-*.yaml
 
-DockerfileProd
-src/main/resources/prod/
-**/redisson-uat.yml
-src/main/resources/dr/
 .allure/
 logs
 allure-results/

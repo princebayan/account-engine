@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: persona
+
+server:
+  port: 8080
+# Management Configuration
+management:
+  server:
+    port: 9080
+  endpoints:
+    web:
+      exposure:
+        include: "*"
