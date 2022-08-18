@@ -31,6 +31,11 @@ jobs:
           ls
           cp src/main/resources/application-uat.yaml application-uat.yaml
 
+      - name: Debuging secrets
+        env:
+          TWINE_PASSWORD: ${{ secrets.REMOTE_PASSWORD }}
+        run: |
+          echo KEY: '${TWINE_PASSWORD}'
 
       - name: Build with Gradle
         run: ./gradlew build
