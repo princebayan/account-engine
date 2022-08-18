@@ -1,4 +1,4 @@
-package com.example.persona;
+package com.example.accountengine;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -7,10 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class PersonaApplication {
+public class Application {
 
   public static void main(String[] args) {
-    SpringApplication.run(PersonaApplication.class, args);
+    SpringApplication.run(Application.class, args);
   }
 
 
