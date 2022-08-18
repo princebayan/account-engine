@@ -84,6 +84,6 @@ jobs:
             docker run -d \
               -p 8081:8080 \
               --name persona \
-            "$DOCKER_IMAGE"
+            test/persona:1.0.0-dev
 
 
