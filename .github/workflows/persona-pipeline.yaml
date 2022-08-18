@@ -11,7 +11,7 @@ on:
 # Environment variables available to all jobs and steps in this workflow
 env:
   GITHUB_SHA: ${{ github.sha }}
-  DOCKER_IMAGE_TAG: DEV
+  DOCKER_IMAGE_TAG: dev
   DEPLOYMENT_NAME: persona
 
 jobs:
