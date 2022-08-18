@@ -55,7 +55,7 @@ jobs:
             --build-arg GITHUB_SHA="$GITHUB_SHA" \
             --build-arg GITHUB_REF="$GITHUB_REF" .
 
-          docker save -o persona-image.tar "$DOCKER_IMAGE_TAG"
+          docker save -o persona-image.tar "$DOCKER_IMAGE"
 
       - name: copy file via ssh password
         uses: appleboy/scp-action@master
