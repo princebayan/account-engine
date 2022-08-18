@@ -79,6 +79,6 @@ jobs:
             cd images
             ls -a
             docker load -i persona-image.tar
-            docker run -d -p 8080:8080 --name persona persona:latest
+            docker run -d -p 8080:8080 --name persona "$DOCKER_IMAGE"
 
 
