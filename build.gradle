@@ -8,6 +8,13 @@ group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
 configurations.all {
 	exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
 }
@@ -28,9 +35,15 @@ dependencies {
 	// Swagger Doc
 	implementation   group:  'org.springdoc',            name: 'springdoc-openapi-ui',               version: '1.6.5'
 
-	compileOnly 'org.projectlombok:lombok'
 
 	runtimeOnly 'org.postgresql:postgresql'
+
+	compileOnly 'org.projectlombok:lombok'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	testImplementation "org.junit.vintage:junit-vintage-engine"
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
