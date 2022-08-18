@@ -60,6 +60,6 @@ jobs:
           host: $REMOTE_HOST
           username: $REMOTE_USERNAME
           password: $REMOTE_PASSWORD
-          port: $REMOTE_PORT
+          port: 22
           script: whoami
 
