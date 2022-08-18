@@ -23,7 +23,7 @@ public class Application {
   public OpenAPI customOpenApi() {
     return new OpenAPI()
         .info(new Info()
-            .title("Persona")
-            .description("Persona API Documentation "));
+            .title("Account Engine")
+            .description("Account Engine API Documentation "));
   }
 }

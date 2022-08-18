@@ -1,5 +1,5 @@
 #Workflow name
-name: Persona Pipeline
+name: Account Engine Pipeline
 on:
   #Manually trigger workflow runs
   workflow_dispatch:
@@ -11,8 +11,8 @@ on:
 # Environment variables available to all jobs and steps in this workflow
 env:
   GITHUB_SHA: ${{ github.sha }}
-  DOCKER_IMAGE: test/persona:1.0.0-dev
-  DEPLOYMENT_NAME: persona
+  DOCKER_IMAGE: test/account-engine:1.0.0-dev
+  DEPLOYMENT_NAME: account-engine
   REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
   REMOTE_USERNAME: ${{ secrets.REMOTE_USERNAME }}
   REMOTE_PASSWORD: ${{ secrets.REMOTE_PASSWORD }}
@@ -55,7 +55,7 @@ jobs:
             --build-arg GITHUB_SHA="$GITHUB_SHA" \
             --build-arg GITHUB_REF="$GITHUB_REF" .
 
-          docker save -o persona-image.tar "$DOCKER_IMAGE"
+          docker save -o account-engine-image.tar "$DOCKER_IMAGE"
 
       - name: copy file via ssh password
         uses: appleboy/scp-action@master
@@ -64,7 +64,7 @@ jobs:
           username: ${{ secrets.REMOTE_USERNAME }}
           password: ${{ secrets.REMOTE_PASSWORD }}
           port: ${{ secrets.REMOTE_PORT }}
-          source: "persona-image.tar"
+          source: "account-engine-image.tar"
           target: "images"
 
       - name: executing remote ssh commands using password
@@ -78,12 +78,12 @@ jobs:
             ls -a
             cd images
             ls -a
-            docker load -i persona-image.tar
-            docker stop persona
-            docker rm persona
+            docker load -i account-engine-image.tar
+            docker stop account-engine
+            docker rm account-engine
             docker run -d \
               -p 8081:8080 \
-              --name persona \
-            test/persona:1.0.0-dev
+              --name account-engine \
+            test/account-engine:1.0.0-dev
 
 
