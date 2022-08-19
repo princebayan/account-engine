@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.accountengine.customer.account.currency.CurrencyRepository">
+
+    <resultMap  id="baseResultMap"  type="com.example.accountengine.customer.account.currency.CurrencyEntity">
+        <id     column="id"         property="id"       jdbcType="INTEGER"/>
+        <result column="name"       property="name"     jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.example.accountengine.customer.account.currency.CurrencyEntity" useGeneratedKeys="true" keyProperty="id" keyColumn="id" >
+        INSERT INTO currency
+        (
+        code
+        )
+        VALUES
+        (
+            #{name}
+        );
+    </insert>
+
+    <select id="findByCode" resultMap="baseResultMap" parameterType="String">
+        select  *
+          from  currency
+         where  upper(code) = upper(#{name})
+    </select>
+
+    <select id="findById" resultMap="baseResultMap" parameterType="Integer">
+        select  *
+          from  currency
+         where  id = #{id}
+    </select>
+
+</mapper>

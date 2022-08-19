@@ -28,6 +28,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
 
+	implementation     group: 'org.modelmapper',           name: 'modelmapper',                        version: '2.3.7'
+
 
 	// add log4j2 dependency
 	implementation 'org.springframework.boot:spring-boot-starter-log4j2'

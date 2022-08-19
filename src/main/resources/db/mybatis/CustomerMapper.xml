@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.accountengine.customer.CustomerRepository">
+
+    <resultMap          id="baseResultMap"      type="com.example.accountengine.customer.CustomerEntity">
+        <id             column="id"             property="id"           jdbcType="INTEGER"/>
+        <result         column="name"           property="name"         jdbcType="VARCHAR"/>
+        <result         column="surname"        property="surname"      jdbcType="VARCHAR"/>
+       </resultMap>
+
+    <insert id="save" parameterType="com.example.accountengine.customer.CustomerEntity" useGeneratedKeys="true" keyProperty="id" keyColumn="id" >
+        INSERT INTO customer
+        (
+            name,
+            surname
+        )
+        VALUES
+        (
+            #{name},
+            #{surname}
+        );
+    </insert>
+
+  <select id="findById" resultMap="baseResultMap" parameterType="Integer">
+        SELECT  *
+          FROM  customer
+         WHERE  id = #{id}
+    </select>
+
+
+</mapper>

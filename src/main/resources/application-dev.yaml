@@ -1,6 +1,20 @@
+# MyBatis Mapper location
+mybatis:
+  mapper-locations: classpath*:/db/mybatis/*Mapper.xml
 spring:
   application:
     name: account-engine
+  datasource:
+    url: jdbc:postgresql://137.184.246.13:5432/account-engine
+    username: postgres
+    password: my_password
+    hikari:
+      minimumIdle: 5
+      maximumPoolSize: 20
+      idleTimeout: 30000
+      poolName: pool
+      maxLifetime: 2000000
+      connectionTimeout: 30000
 
 server:
   port: 8080
