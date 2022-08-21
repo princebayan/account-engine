@@ -13,6 +13,7 @@ public class GetCustomerResponse {
   private int id;
   private String name;
   private String surname;
+  private String customerNumber;
   private List<Account> accounts;
 
 }

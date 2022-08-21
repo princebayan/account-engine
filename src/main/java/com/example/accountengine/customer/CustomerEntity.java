@@ -8,6 +8,7 @@ import lombok.Setter;
 public class CustomerEntity {
 
   private int id;
+  private String customerId;
   private String name;
   private String surname;
 

@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface CurrencyRepository {
 
-  CustomerEntity findByCode(String code);
+  CurrencyEntity findByCode(String code);
 }

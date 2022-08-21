@@ -5,23 +5,21 @@ spring:
   application:
     name: account-engine
   datasource:
-    url: jdbc:postgresql://137.184.246.13:5432/account-engine
-    username: postgres
-    password: my_password
-    hikari:
-      minimumIdle: 5
-      maximumPoolSize: 20
-      idleTimeout: 30000
-      poolName: pool
-      maxLifetime: 2000000
-      connectionTimeout: 30000
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
+    driver-class-name: org.h2.Driver
 server:
-  port: 8080
+  port: 8081
 # Management Configuration
 management:
   server:
-    port: 9080
+    port: 9081
   endpoints:
     web:
       exposure:
         include: "*"
+
+transfer-engine:
+  host: 137.184.246.13
+  port: 8082

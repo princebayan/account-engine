@@ -2,8 +2,9 @@ BEGIN;
 -- Create Customer Tables
 CREATE TABLE customer(
                         id                serial PRIMARY KEY,
+                        customer_id       VARCHAR(7) UNIQUE NOT NULL,
                         name              VARCHAR(50) UNIQUE NOT NULL,
-                        surname           VARCHAR(256) NOT NULL
+                        surname           VARCHAR(50) NOT NULL
 );
 -- Create currency Tables
 CREATE TABLE currency(

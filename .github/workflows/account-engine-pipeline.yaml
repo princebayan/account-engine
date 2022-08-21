@@ -82,7 +82,8 @@ jobs:
             docker stop account-engine
             docker rm account-engine
             docker run -d \
-              -p 8081:8080 \
+              -p 8081:8081 \
+              --restart=unless-stopped \
               --name account-engine \
             test/account-engine:1.0.0-dev
 

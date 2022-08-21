@@ -4,7 +4,7 @@
 
     <resultMap  id="baseResultMap"  type="com.example.accountengine.customer.account.currency.CurrencyEntity">
         <id     column="id"         property="id"       jdbcType="INTEGER"/>
-        <result column="name"       property="name"     jdbcType="VARCHAR"/>
+        <result column="code"       property="code"     jdbcType="VARCHAR"/>
     </resultMap>
 
     <insert id="save" parameterType="com.example.accountengine.customer.account.currency.CurrencyEntity" useGeneratedKeys="true" keyProperty="id" keyColumn="id" >
@@ -14,14 +14,14 @@
         )
         VALUES
         (
-            #{name}
+            #{code}
         );
     </insert>
 
     <select id="findByCode" resultMap="baseResultMap" parameterType="String">
         select  *
           from  currency
-         where  upper(code) = upper(#{name})
+         where  upper(code) = upper(#{code})
     </select>
 
     <select id="findById" resultMap="baseResultMap" parameterType="Integer">

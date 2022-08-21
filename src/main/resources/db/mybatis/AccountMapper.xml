@@ -6,8 +6,8 @@
         <id           column="id"               property="id"             jdbcType="INTEGER"/>
         <result       column="account_number"   property="accountNumber"  jdbcType="VARCHAR"/>
         <result       column="balance"          property="balance"        jdbcType="DECIMAL"/>
-      <association    column="currency_id"      property="currency"       javaType="com.example.accountengine.customer.account.currency.CurrencyEntity"   select="com.example.accountengine.customer.account.currency.CurrencyRepository.findById"/>
-      <association    column="customer_id"      property="customer"       javaType="com.example.accountengine.customer.CustomerEntity"                    select="com.example.accountengine.customer.CustomerRepository.findById"/>
+      <association    column="fk_currency_id"      property="currency"       javaType="com.example.accountengine.customer.account.currency.CurrencyEntity"   select="com.example.accountengine.customer.account.currency.CurrencyRepository.findById"/>
+      <association    column="fk_customer_id"      property="customer"       javaType="com.example.accountengine.customer.CustomerEntity"                    select="com.example.accountengine.customer.CustomerRepository.findById"/>
 
     </resultMap>
 
@@ -17,7 +17,23 @@
         SELECT  *
           FROM  account
          WHERE  fk_customer_id = #{id}
-    </select>
+  </select>
 
+  <insert id="save" parameterType="com.example.accountengine.customer.account.AccountEntity" useGeneratedKeys="true" keyProperty="id" keyColumn="id" >
+    INSERT INTO account
+    (
+      account_number,
+      balance,
+      fk_currency_id,
+      fk_customer_id
+    )
+    VALUES
+    (
+      #{accountNumber},
+      #{balance},
+      #{currency.id},
+      #{customer.id}
+    );
+  </insert>
 
 </mapper>

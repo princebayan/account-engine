@@ -9,6 +9,5 @@ public class CurrencyEntity {
 
   private int id;
   private String code;
-  private String name;
 
 }

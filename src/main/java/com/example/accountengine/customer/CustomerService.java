@@ -6,10 +6,10 @@ import com.example.accountengine.customer.exception.CustomerNotFoundException;
 import com.example.accountengine.customer.response.Account;
 import com.example.accountengine.customer.response.GetCustomerResponse;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -41,6 +41,7 @@ public class CustomerService {
     Mapping customer entity to get customer response.
      */
     modelMapper.map(customerEntity, result);
+    result.setCustomerNumber(customerEntity.getCustomerId());
     /*
     Get the related accounts for the customer
      */
@@ -49,10 +50,15 @@ public class CustomerService {
     /*
     Map the account entity list to the account list
      */
-    List<Account> accountList = modelMapper.map(
-        accounts,
-        new TypeToken<List<Account>>() {
-        }.getType());
+    List<Account> accountList = accounts.parallelStream()
+        .map(accountEntity -> {
+          Account account = new Account();
+          account.setAccountNumber(accountEntity.getAccountNumber());
+          account.setCurrency(accountEntity.getCurrency().getCode());
+          account.setBalance(accountEntity.getBalance());
+          return account;
+        })
+        .collect(Collectors.toList());
     /*
     Set the account list
      */

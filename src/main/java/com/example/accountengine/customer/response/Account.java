@@ -9,5 +9,6 @@ import lombok.Setter;
 public class Account {
 
   private String accountNumber;
+  private String currency;
   private BigDecimal balance;
 }

@@ -5,6 +5,7 @@ import io.swagger.v3.oas.models.info.Info;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class Application {
@@ -25,5 +26,13 @@ public class Application {
         .info(new Info()
             .title("Account Engine")
             .description("Account Engine API Documentation "));
+  }
+
+  /**
+   * Create the rest template bean to be used when calling the transfer engine
+   */
+  @Bean
+  public RestTemplate restTemplate() {
+    return new RestTemplate();
   }
 }
