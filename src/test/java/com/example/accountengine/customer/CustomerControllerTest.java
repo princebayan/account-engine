@@ -157,7 +157,7 @@ public class CustomerControllerTest {
   @Test
   @DisplayName("Test Get Customer not found")
   @Description("Test Get Customer not found"
-      + "Acceptance Criteria = 422 Success")
+      + "Acceptance Criteria = 422 Unprocessable Entity")
   public void testGetCustomerNotFound() throws Exception {
 
 

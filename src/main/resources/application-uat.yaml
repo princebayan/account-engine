@@ -5,7 +5,7 @@ spring:
   application:
     name: account-engine
   datasource:
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:testdb;mode=Postgresql
     username: sa
     password: password
     driver-class-name: org.h2.Driver

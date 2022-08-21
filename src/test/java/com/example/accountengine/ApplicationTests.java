@@ -5,6 +5,8 @@ import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnviro
 import com.google.common.collect.ImmutableMap;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
 
 @SpringBootTest
 class ApplicationTests {
