@@ -1,4 +1,4 @@
-package com.example.accountengine.customerid;
+package com.example.accountengine.customer.customerid;
 
 public interface CustomerIdGenerator {
 

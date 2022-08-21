@@ -5,7 +5,7 @@ import com.example.accountengine.customer.account.AccountRepository;
 import com.example.accountengine.customer.exception.CustomerNotFoundException;
 import com.example.accountengine.customer.response.Account;
 import com.example.accountengine.customer.response.GetCustomerResponse;
-import com.example.accountengine.customerid.CustomerIdGeneratorImpl;
+import com.example.accountengine.customer.customerid.CustomerIdGeneratorImpl;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;

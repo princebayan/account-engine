@@ -1,4 +1,4 @@
-package com.example.accountengine.customerid;
+package com.example.accountengine.customer.customerid;
 
 import java.util.Random;
 import lombok.extern.log4j.Log4j2;
