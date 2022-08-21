@@ -4,6 +4,7 @@ import com.example.accountengine.customer.CustomerEntity;
 import com.example.accountengine.customer.CustomerRepository;
 import com.example.accountengine.customer.account.accountnumber.AccountGenerator;
 import com.example.accountengine.customer.account.currency.CurrencyRepository;
+import com.example.accountengine.customer.account.response.CreateAccountResponse;
 import com.example.accountengine.customer.exception.CustomerNotFoundException;
 import com.example.accountengine.shared.transferengine.TransferEngineNetwork;
 import java.math.BigDecimal;
@@ -26,7 +27,7 @@ public class AccountService {
   private final TransferEngineNetwork transferEngineNetwork;
 
   @Transactional
-  public void createAccount(int customerId, BigDecimal initialCredit) {
+  public CreateAccountResponse createAccount(int customerId, BigDecimal initialCredit) {
     /*
     Check if customerId exists
      */
@@ -69,5 +70,13 @@ public class AccountService {
           initialCredit
       );
     }
+    /*
+    Prepare the Create Account Response
+     */
+    CreateAccountResponse createAccountResponse = new CreateAccountResponse();
+    createAccountResponse.setAccountNumber(accountEntity.getAccountNumber());
+    createAccountResponse.setBalance(accountEntity.getBalance());
+
+    return createAccountResponse;
   }
 }
