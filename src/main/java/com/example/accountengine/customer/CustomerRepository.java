@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface CustomerRepository {
 
-
+  int save(CustomerEntity customerEntity);
+  int update(CustomerEntity customerEntity);
   CustomerEntity findById(int id);
 }

@@ -5,12 +5,14 @@ import com.example.accountengine.customer.account.AccountRepository;
 import com.example.accountengine.customer.exception.CustomerNotFoundException;
 import com.example.accountengine.customer.response.Account;
 import com.example.accountengine.customer.response.GetCustomerResponse;
+import com.example.accountengine.customerid.CustomerIdGeneratorImpl;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Log4j2
@@ -18,9 +20,42 @@ import org.springframework.stereotype.Service;
 public class CustomerService {
 
   private static final ModelMapper modelMapper = new ModelMapper();
-
   private final CustomerRepository customerRepository;
   private final AccountRepository accountRepository;
+
+  private final CustomerIdGeneratorImpl customerIdGenerator;
+
+  @Transactional
+  public int createCustomer(String name, String surname) {
+    /*
+    prepare the customer entity object
+     */
+    CustomerEntity customerEntity = new CustomerEntity();
+    customerEntity.setName(name);
+    customerEntity.setCustomerId("0");
+    customerEntity.setSurname(surname);
+    /*
+    Save customer in the database
+     */
+    customerRepository.save(customerEntity);
+    /*
+    Generate the customer id
+     */
+    String customerId = customerIdGenerator.generateCustomerId(customerEntity.getId());
+    /*
+    Set the customer id in the customer entity
+     */
+    customerEntity.setCustomerId(customerId);
+    /*
+    Update customer entity in the database
+     */
+    customerRepository.update(customerEntity);
+    /*
+    Return id
+     */
+    return customerEntity.getId();
+  }
+
 
   public GetCustomerResponse getCustomer(int customerId) {
     /*

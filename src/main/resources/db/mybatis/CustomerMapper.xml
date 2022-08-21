@@ -24,6 +24,14 @@
         );
     </insert>
 
+  <update id="update" parameterType="com.example.accountengine.customer.CustomerEntity">
+    UPDATE customer
+    SET customer_id = #{customerId},
+         name = #{name},
+        surname = #{surname}
+    WHERE id = #{id}
+
+  </update>
   <select id="findById" resultMap="baseResultMap" parameterType="Integer">
         SELECT  *
           FROM  customer
