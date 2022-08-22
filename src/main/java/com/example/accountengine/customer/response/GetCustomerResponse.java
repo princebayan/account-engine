@@ -15,5 +15,5 @@ public class GetCustomerResponse {
   private String surname;
   private String customerNumber;
   private List<Account> accounts;
-
+  private List<Transaction> transactions;
 }

@@ -2,10 +2,13 @@ package com.example.accountengine.customer;
 
 import com.example.accountengine.customer.account.AccountEntity;
 import com.example.accountengine.customer.account.AccountRepository;
+import com.example.accountengine.customer.customerid.CustomerIdGeneratorImpl;
 import com.example.accountengine.customer.exception.CustomerNotFoundException;
 import com.example.accountengine.customer.response.Account;
 import com.example.accountengine.customer.response.GetCustomerResponse;
-import com.example.accountengine.customer.customerid.CustomerIdGeneratorImpl;
+import com.example.accountengine.customer.response.Transaction;
+import com.example.accountengine.shared.transferengine.TransferEngineNetwork;
+import com.example.accountengine.shared.transferengine.response.TransactionsResponse;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
@@ -24,6 +27,8 @@ public class CustomerService {
   private final AccountRepository accountRepository;
 
   private final CustomerIdGeneratorImpl customerIdGenerator;
+
+  private final TransferEngineNetwork transferEngineNetwork;
 
   @Transactional
   public int createCustomer(String name, String surname) {
@@ -98,6 +103,30 @@ public class CustomerService {
     Set the account list
      */
     result.setAccounts(accountList);
+    /*
+    Get transfer from the transfer engine
+     */
+    TransactionsResponse transactionsResponse = transferEngineNetwork
+        .getTransactions(customerId);
+    /*
+    Map the transactions
+     */
+    List<Transaction> transactions = transactionsResponse.getTransactions().parallelStream()
+        .map(transaction -> {
+          Transaction transactionRes = new Transaction();
+          transactionRes.setAmount(transaction.getAmount());
+          transactionRes.setCreatedDate(transaction.getCreatedDate());
+          transactionRes.setUpdatedDate(transaction.getUpdatedDate());
+          transactionRes.setId(transaction.getId());
+          transactionRes.setAccount(transaction.getDestinationAccount());
+          return transactionRes;
+        })
+        .collect(Collectors.toList());
+    /*
+    fill the transactions in the result
+     */
+    result.setTransactions(transactions);
+
     return result;
   }
 
