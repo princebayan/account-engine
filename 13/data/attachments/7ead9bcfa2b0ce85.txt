@@ -1,4 +1,0 @@
-{
-  "accountNumber": "1338508114840",
-  "balance": 0
-}
