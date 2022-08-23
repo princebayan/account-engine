@@ -9,6 +9,9 @@
 
 Account engine is a spring boot java application that expose APIs to manage customer accounts and transactions
 
+The Account-engine communicate with the [transaction-engine](https://github.com/princebayan/transaction-engine) service to execute a transaction.
+
+
 
 Minimal [Spring Boot](http://projects.spring.io/spring-boot/) sample app.
 
