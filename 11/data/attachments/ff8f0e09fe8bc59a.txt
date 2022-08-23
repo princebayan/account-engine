@@ -1,0 +1,8 @@
+{
+  "id": 1,
+  "name": "Amir",
+  "surname": "Bayan",
+  "customerNumber": "1338508",
+  "accounts": [],
+  "transactions": []
+}
