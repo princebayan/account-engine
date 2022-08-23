@@ -20,6 +20,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
+/**
+ * The type Customer controller test.
+ */
 @SpringBootTest
 @AutoConfigureMockMvc
 @DisplayName("Customer Controller Test")
@@ -30,6 +33,11 @@ public class CustomerControllerTest {
   @Autowired
   private MockMvc mvc;
 
+  /**
+   * Test create customer.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @DisplayName("Test Create Customer")
   @Description("Test Create Customer "
@@ -63,6 +71,11 @@ public class CustomerControllerTest {
     Allure.addAttachment("Execution Time in ms", String.valueOf(executionTime));
   }
 
+  /**
+   * Test create customer name null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @DisplayName("Test Create Customer name is null")
   @Description("Test Create Customer name is null "
@@ -95,6 +108,11 @@ public class CustomerControllerTest {
     Allure.addAttachment("Execution Time in ms", String.valueOf(executionTime));
   }
 
+  /**
+   * Test create customer surname null.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @DisplayName("Test Create Customer surname is null")
   @Description("Test Create Customer surname is null "
@@ -127,6 +145,11 @@ public class CustomerControllerTest {
     Allure.addAttachment("Execution Time in ms", String.valueOf(executionTime));
   }
 
+  /**
+   * Test get customer.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @DisplayName("Test Get Customer")
   @Description("Test Get Customer "
@@ -153,7 +176,11 @@ public class CustomerControllerTest {
   }
 
 
-
+  /**
+   * Test get customer not found.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @DisplayName("Test Get Customer not found")
   @Description("Test Get Customer not found"

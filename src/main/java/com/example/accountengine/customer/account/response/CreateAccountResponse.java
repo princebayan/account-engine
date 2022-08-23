@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * The type Create account response.
+ */
 @Getter
 @Setter
 @ToString

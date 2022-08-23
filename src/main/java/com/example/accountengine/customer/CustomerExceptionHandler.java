@@ -11,12 +11,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+/**
+ * The type Customer exception handler.
+ */
 @RestControllerAdvice
 @Log4j2
 @AllArgsConstructor
 @Order(value = Ordered.HIGHEST_PRECEDENCE)
 public class CustomerExceptionHandler {
 
+  /**
+   * Handle customer not found exception response entity.
+   *
+   * @param ex the ex
+   * @return the response entity
+   */
   @ExceptionHandler(CustomerNotFoundException.class)
   public ResponseEntity<?> handleCustomerNotFoundException(CustomerNotFoundException ex) {
     log.warn("handle CustomerNotFoundException, id :{}", ex.getCustomerId());

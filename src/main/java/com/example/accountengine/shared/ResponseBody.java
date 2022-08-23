@@ -36,6 +36,15 @@ public class ResponseBody<T> {
         return new ResponseBody<>(HttpStatus.OK.value(), "Success", response);
     }
 
+    /**
+     * Failed error response body.
+     *
+     * @param <T>            the type parameter
+     * @param apiError       the api error
+     * @param httpStatusCode the http status code
+     * @param httpMessage    the http message
+     * @return the response body
+     */
     public static <T> ResponseBody<T> failedError(T apiError, int httpStatusCode, String httpMessage) {
         return new ResponseBody<>(httpStatusCode, httpMessage, apiError);
     }

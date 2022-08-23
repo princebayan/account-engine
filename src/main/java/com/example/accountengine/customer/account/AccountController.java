@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * The type Account controller.
+ */
 @RestController
 @RequestMapping(value = "customer/{id}/account")
 @Validated
@@ -27,6 +30,13 @@ public class AccountController {
   private final AccountService accountService;
 
 
+  /**
+   * Create account response entity.
+   *
+   * @param id                   the id
+   * @param createAccountRequest the create account request
+   * @return the response entity
+   */
   @PostMapping
   public ResponseEntity<CreateAccountResponse> createAccount(
       @PathVariable @Positive int id,

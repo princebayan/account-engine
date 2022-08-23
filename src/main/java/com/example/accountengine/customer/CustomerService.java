@@ -17,6 +17,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * The type Customer service.
+ */
 @Service
 @Log4j2
 @AllArgsConstructor
@@ -30,6 +33,13 @@ public class CustomerService {
 
   private final TransferEngineNetwork transferEngineNetwork;
 
+  /**
+   * Create customer int.
+   *
+   * @param name    the name
+   * @param surname the surname
+   * @return the int
+   */
   @Transactional
   public int createCustomer(String name, String surname) {
     /*
@@ -62,6 +72,12 @@ public class CustomerService {
   }
 
 
+  /**
+   * Gets customer.
+   *
+   * @param customerId the customer id
+   * @return the customer
+   */
   public GetCustomerResponse getCustomer(int customerId) {
     /*
     Prepare the result

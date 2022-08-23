@@ -3,6 +3,9 @@ package com.example.accountengine.customer.account.accountnumber;
 import java.util.Random;
 import org.springframework.stereotype.Service;
 
+/**
+ * The type Account generator.
+ */
 @Service
 public class AccountGeneratorImpl implements AccountGenerator {
 

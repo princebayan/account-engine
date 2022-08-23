@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * The type Customer controller.
+ */
 @RestController
 @RequestMapping(value = "customer")
 @Validated
@@ -29,6 +32,12 @@ public class CustomerController {
   private final CustomerService customerService;
 
 
+  /**
+   * Create customer response entity.
+   *
+   * @param createCustomerRequest the create customer request
+   * @return the response entity
+   */
   @PostMapping
   public ResponseEntity<CreateCustomerResponse> createCustomer(
       @RequestBody
@@ -54,6 +63,12 @@ public class CustomerController {
     return ResponseEntity.status(HttpStatus.OK).body(response);
   }
 
+  /**
+   * Gets customer.
+   *
+   * @param id the id
+   * @return the customer
+   */
   @GetMapping("/{id}")
   public ResponseEntity<GetCustomerResponse> getCustomer(
       @PathVariable

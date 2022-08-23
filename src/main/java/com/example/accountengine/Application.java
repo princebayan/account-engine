@@ -7,9 +7,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * The type Application.
+ */
 @SpringBootApplication
 public class Application {
 
+  /**
+   * The entry point of application.
+   *
+   * @param args the input arguments
+   */
   public static void main(String[] args) {
     SpringApplication.run(Application.class, args);
   }
@@ -30,6 +38,8 @@ public class Application {
 
   /**
    * Create the rest template bean to be used when calling the transfer engine
+   *
+   * @return the rest template
    */
   @Bean
   public RestTemplate restTemplate() {

@@ -21,6 +21,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
+/**
+ * The type Account controller test.
+ */
 @SpringBootTest
 @AutoConfigureMockMvc
 @DisplayName("Account Controller Test")
@@ -31,6 +34,11 @@ public class AccountControllerTest {
   @Autowired
   private MockMvc mvc;
 
+  /**
+   * Test create account.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @DisplayName("Test Create Account")
   @Description("Test Create Account "
@@ -64,6 +72,11 @@ public class AccountControllerTest {
   }
 
 
+  /**
+   * Test create account initial zero.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @DisplayName("Test Create Account initial Zero")
   @Description("Test Create Account initial Zero"
@@ -97,6 +110,11 @@ public class AccountControllerTest {
   }
 
 
+  /**
+   * Test create account customer not found.
+   *
+   * @throws Exception the exception
+   */
   @Test
   @DisplayName("Test Create Account Customer Not Found")
   @Description("Test Create Account Customer Not Found"

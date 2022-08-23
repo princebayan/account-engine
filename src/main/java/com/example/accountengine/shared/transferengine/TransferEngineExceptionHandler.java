@@ -12,6 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+/**
+ * The type Transfer engine exception handler.
+ */
 @RestControllerAdvice
 @Log4j2
 @AllArgsConstructor
@@ -19,6 +22,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class TransferEngineExceptionHandler {
 
 
+  /**
+   * Handle execute transfer exception response entity.
+   *
+   * @param ex the ex
+   * @return the response entity
+   */
   @ExceptionHandler(ExecuteTransferException.class)
   public ResponseEntity<?> handleExecuteTransferException(ExecuteTransferException ex) {
     log.warn("handle ExecuteTransferException, id :{}", ex.getCustomerId());
@@ -35,6 +44,12 @@ public class TransferEngineExceptionHandler {
     return new ResponseEntity<>(responseBody, HttpStatus.UNPROCESSABLE_ENTITY);
   }
 
+  /**
+   * Handle get transaction exception response entity.
+   *
+   * @param ex the ex
+   * @return the response entity
+   */
   @ExceptionHandler(GetTransactionException.class)
   public ResponseEntity<?> handleGetTransactionException(GetTransactionException ex) {
     log.warn("handle GetTransactionException, id :{}", ex.getCustomerId());

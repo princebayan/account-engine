@@ -13,6 +13,9 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * The type Account service.
+ */
 @Service
 @AllArgsConstructor
 @Log4j2
@@ -26,6 +29,13 @@ public class AccountService {
   private final AccountGenerator accountGenerator;
   private final TransferEngineNetwork transferEngineNetwork;
 
+  /**
+   * Create account create account response.
+   *
+   * @param customerId    the customer id
+   * @param initialCredit the initial credit
+   * @return the create account response
+   */
   @Transactional
   public CreateAccountResponse createAccount(int customerId, BigDecimal initialCredit) {
     /*

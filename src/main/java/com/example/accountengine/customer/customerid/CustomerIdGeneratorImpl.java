@@ -4,6 +4,9 @@ import java.util.Random;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+/**
+ * The type Customer id generator.
+ */
 @Service
 @Log4j2
 public class CustomerIdGeneratorImpl implements CustomerIdGenerator {

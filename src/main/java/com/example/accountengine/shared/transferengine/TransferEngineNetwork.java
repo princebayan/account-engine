@@ -11,6 +11,9 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * The type Transfer engine network.
+ */
 @AllArgsConstructor
 @Log4j2
 @Service
@@ -19,6 +22,19 @@ public class TransferEngineNetwork {
   private final RestTemplate restTemplate;
   private final TransferEngineConfig transferEngineConfig;
 
+  /**
+   * Execute transaction int.
+   *
+   * @param amount                     the amount
+   * @param customerId                 the customer id
+   * @param destinationAccount         the destination account
+   * @param destinationCurrency        the destination currency
+   * @param sourceAccount              the source account
+   * @param sourceCurrency             the source currency
+   * @param totalDebitedFromSource     the total debited from source
+   * @param totalCreditedToDestination the total credited to destination
+   * @return the int
+   */
   public int executeTransaction(
       BigDecimal amount,
       int customerId,
@@ -64,6 +80,12 @@ public class TransferEngineNetwork {
   }
 
 
+  /**
+   * Get transactions transactions response.
+   *
+   * @param customerId the customer id
+   * @return the transactions response
+   */
   public TransactionsResponse getTransactions (int customerId){
     /*
     Build transfer engine url

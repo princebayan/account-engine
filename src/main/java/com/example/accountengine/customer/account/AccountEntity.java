@@ -6,6 +6,9 @@ import java.math.BigDecimal;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * The type Account entity.
+ */
 @Getter
 @Setter
 public class AccountEntity {

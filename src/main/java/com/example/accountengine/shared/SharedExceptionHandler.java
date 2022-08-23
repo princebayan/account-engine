@@ -25,7 +25,6 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 public class SharedExceptionHandler {
 
 
-
   /**
    * Handle media type not supported exception response entity.
    *
